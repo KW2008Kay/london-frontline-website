@@ -188,12 +188,45 @@
             background: white;
             border-radius: 15px;
             padding: 20px;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
             box-shadow: 0 8px 25px rgba(0,0,0,0.1);
             display: flex;
             flex-wrap: wrap;
             gap: 10px;
             justify-content: center;
+        }
+        
+        /* Info Box */
+        .info-box {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            border-left: 5px solid #1e3c72;
+            min-height: 300px;
+        }
+        
+        .info-box h2 {
+            color: #1e3c72;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #ffd700;
+        }
+        
+        .info-box-content {
+            display: none;
+        }
+        
+        .info-box-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         
         .nav-tab {
@@ -403,18 +436,38 @@
         .contact-item {
             display: flex;
             align-items: center;
-            margin-bottom: 15px;
-            padding: 10px;
+            gap: 15px;
+            padding: 15px;
             background: white;
             border-radius: 8px;
+            margin-bottom: 10px;
             box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .contact-item:hover {
+            transform: translateX(5px);
         }
         
         .contact-icon {
-            width: 30px;
-            margin-right: 15px;
-            color: #1e3c72;
-            font-size: 1.2em;
+            font-size: 1.5em;
+            min-width: 30px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px;
+            background: white;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .contact-item:hover {
+            transform: translateX(5px);
         }
         
         .footer {
@@ -506,27 +559,226 @@
     </div>
     
     <div class="container">
-        <!-- Navigation Tabs -->
-        <div class="nav-tabs">
-            <div class="nav-tab active" onclick="openModal('overview')">
-                📋 Overview
-            </div>
-            <div class="nav-tab" onclick="openModal('guidelines')">
-                📜 Guidelines
-            </div>
-            <div class="nav-tab" onclick="openModal('departments')">
-                🏢 Departments
-            </div>
-            <div class="nav-tab" onclick="openModal('training')">
-                🎓 Training
-            </div>
-            <div class="nav-tab" onclick="openModal('contact')">
-                📞 Contact
-            </div>
-            <div class="nav-tab" onclick="openModal('application')">
-                📝 Application
-            </div>
-        </div>
+                   <!-- Navigation Tabs -->
+           <div class="nav-tabs">
+               <div class="nav-tab active" onclick="showInfo('overview')">
+                   📋 Overview
+               </div>
+               <div class="nav-tab" onclick="showInfo('guidelines')">
+                   📜 Guidelines
+               </div>
+               <div class="nav-tab" onclick="showInfo('departments')">
+                   🏢 Departments
+               </div>
+               <div class="nav-tab" onclick="showInfo('training')">
+                   🎓 Training
+               </div>
+               <div class="nav-tab" onclick="showInfo('contact')">
+                   📞 Contact
+               </div>
+               <div class="nav-tab" onclick="showInfo('application')">
+                   📝 Application
+               </div>
+           </div>
+           
+           <!-- Info Box -->
+           <div class="info-box">
+               <div id="overviewInfo" class="info-box-content active">
+                   <h2>📋 Community Overview</h2>
+                   <div class="stats-grid">
+                       <div class="stat-card">
+                           <div class="stat-number">500+</div>
+                           <div class="stat-label">Active Members</div>
+                       </div>
+                       <div class="stat-card">
+                           <div class="stat-number">24/7</div>
+                           <div class="stat-label">Server Uptime</div>
+                       </div>
+                       <div class="stat-card">
+                           <div class="stat-number">50+</div>
+                           <div class="stat-label">Staff Members</div>
+                       </div>
+                       <div class="stat-card">
+                           <div class="stat-number">100%</div>
+                           <div class="stat-label">Professional RP</div>
+                       </div>
+                   </div>
+                   <div class="modal-section">
+                       <h3>Welcome to London Frontline</h3>
+                       <p>London Frontline is a premier FiveM roleplay community dedicated to providing the most authentic and professional emergency services experience. Our community focuses on realistic police, fire, and ambulance roleplay with strict adherence to real-world procedures and protocols.</p>
+                       <p><strong>Location:</strong> London Frontline, Central London</p>
+                       <p><strong>Server Type:</strong> Professional Emergency Services Roleplay</p>
+                       <p><strong>Community Focus:</strong> Realistic policing, firefighting, and emergency medical services</p>
+                   </div>
+               </div>
+               
+               <div id="guidelinesInfo" class="info-box-content">
+                   <h2>📜 Community Guidelines</h2>
+                   <div class="modal-grid">
+                       <div class="modal-card">
+                           <h4>General Rules</h4>
+                           <ul>
+                               <li>Respect all community members and staff</li>
+                               <li>Maintain professional behavior at all times</li>
+                               <li>Follow roleplay etiquette and procedures</li>
+                               <li>No harassment, discrimination, or toxic behavior</li>
+                               <li>Use appropriate language and communication</li>
+                           </ul>
+                       </div>
+                       <div class="modal-card">
+                           <h4>Roleplay Standards</h4>
+                           <ul>
+                               <li>Stay in character during roleplay scenarios</li>
+                               <li>Follow realistic police/fire/EMS procedures</li>
+                               <li>Use proper radio communications and codes</li>
+                               <li>Maintain realistic response times and protocols</li>
+                               <li>Respect the chain of command and authority</li>
+                           </ul>
+                       </div>
+                       <div class="modal-card">
+                           <h4>Technical Requirements</h4>
+                           <ul>
+                               <li>Stable internet connection required</li>
+                               <li>Working microphone for voice communications</li>
+                               <li>FiveM client properly installed and updated</li>
+                               <li>Respect server performance and limits</li>
+                               <li>Report technical issues to staff</li>
+                           </ul>
+                       </div>
+                   </div>
+               </div>
+               
+               <div id="departmentsInfo" class="info-box-content">
+                   <h2>🏢 Available Departments</h2>
+                   <div class="modal-grid">
+                       <div class="modal-card">
+                           <h4>Metropolitan Police Service</h4>
+                           <span class="status-badge status-active">Recruiting</span>
+                           <p>London's primary police force. Maintain law and order, investigate crimes, and protect the community.</p>
+                           <ul>
+                               <li>Response Officers (PC/DC)</li>
+                               <li>Detectives (DS/DI)</li>
+                               <li>Specialist Units (SO19, Traffic)</li>
+                               <li>Management Positions (Sgt/Insp)</li>
+                               <li>Specialist Roles (Dog Handler, Mounted)</li>
+                           </ul>
+                       </div>
+                       <div class="modal-card">
+                           <h4>London Fire Brigade</h4>
+                           <span class="status-badge status-active">Recruiting</span>
+                           <p>Emergency response and fire safety services. Work alongside police to provide comprehensive emergency services.</p>
+                           <ul>
+                               <li>Firefighters</li>
+                               <li>Fire Safety Officers</li>
+                               <li>Rescue Teams</li>
+                               <li>Hazmat Specialists</li>
+                               <li>Fire Investigation Units</li>
+                           </ul>
+                       </div>
+                       <div class="modal-card">
+                           <h4>London Ambulance Service</h4>
+                           <span class="status-badge status-active">Recruiting</span>
+                           <p>Emergency medical services and patient care. Provide critical medical support during emergencies.</p>
+                           <ul>
+                               <li>Paramedics</li>
+                               <li>Emergency Medical Technicians</li>
+                               <li>Ambulance Drivers</li>
+                               <li>Emergency Care Practitioners</li>
+                               <li>Specialist Paramedics</li>
+                           </ul>
+                       </div>
+                   </div>
+               </div>
+               
+               <div id="trainingInfo" class="info-box-content">
+                   <h2>🎓 Training & Development</h2>
+                   <div class="modal-grid">
+                       <div class="modal-card">
+                           <h4>Basic Training</h4>
+                           <p>All new recruits must complete comprehensive basic training covering:</p>
+                           <ul>
+                               <li>Roleplay fundamentals and etiquette</li>
+                               <li>Server rules and community guidelines</li>
+                               <li>Basic police procedures and protocols</li>
+                               <li>Radio communications and codes</li>
+                               <li>Emergency response procedures</li>
+                           </ul>
+                       </div>
+                       <div class="modal-card">
+                           <h4>Advanced Training</h4>
+                           <p>Specialized training programs for experienced members:</p>
+                           <ul>
+                               <li>Advanced driving and pursuit tactics</li>
+                               <li>Firearms training and safety</li>
+                               <li>Detective work and investigations</li>
+                               <li>Leadership and management skills</li>
+                               <li>Specialist unit training</li>
+                           </ul>
+                       </div>
+                       <div class="modal-card">
+                           <h4>Continuous Development</h4>
+                           <p>Ongoing training and development opportunities:</p>
+                           <ul>
+                               <li>Regular scenario-based training</li>
+                               <li>Real-world police procedure updates</li>
+                               <li>Community workshops and seminars</li>
+                               <li>Mentorship programs</li>
+                               <li>Career progression pathways</li>
+                           </ul>
+                       </div>
+                   </div>
+               </div>
+               
+               <div id="contactInfo" class="info-box-content">
+                   <h2>📞 Contact Information</h2>
+                   <div class="contact-info">
+                       <h3>Community Leadership</h3>
+                       <div class="contact-item">
+                           <span class="contact-icon">👤</span>
+                           <span>Server Owner: Jim, Benj.</span>
+                       </div>
+                       <div class="contact-item">
+                           <span class="contact-icon">📧</span>
+                           <span>Email: N/A</span>
+                       </div>
+                       <div class="contact-item">
+                           <span class="contact-icon">💬</span>
+                           <span>Discord: [EU/UK] London Frontline</span>
+                       </div>
+                       <div class="contact-item">
+                           <span class="contact-icon">🌐</span>
+                           <span>Website: N/A</span>
+                       </div>
+                       <div class="contact-item">
+                           <span class="contact-icon">📱</span>
+                           <span>Support: Available 24/7 via Discord</span>
+                       </div>
+                   </div>
+               </div>
+               
+               <div id="applicationInfo" class="info-box-content">
+                   <h2>📝 Application Process</h2>
+                   <div class="modal-grid">
+                       <div class="modal-card">
+                           <h4>Step 1: Join Discord</h4>
+                           <p>Join our Discord community to stay updated and connect with other members. This is where all community communication takes place.</p>
+                           <p><strong>Discord Server:</strong> <a href="https://discord.gg/6WcxxJcCfT" target="_blank" style="color: #1e3c72; text-decoration: none; font-weight: bold; padding: 8px 16px; background: #ffd700; border-radius: 8px; display: inline-block; margin-top: 10px; transition: all 0.3s ease;">Join Discord Server</a></p>
+                       </div>
+                       <div class="modal-card">
+                           <h4>Step 2: Submit Application</h4>
+                           <p>Complete the online application form with your roleplay experience and preferences. Be honest and detailed in your responses.</p>
+                       </div>
+                       <div class="modal-card">
+                           <h4>Step 3: Interview</h4>
+                           <p>Attend a brief interview with our recruitment team to discuss your roleplay goals and ensure compatibility with our community.</p>
+                       </div>
+                       <div class="modal-card">
+                           <h4>Step 4: Training</h4>
+                           <p>Complete basic training and orientation before starting your roleplay journey. This ensures everyone maintains high standards.</p>
+                       </div>
+                   </div>
+               </div>
+           </div>
         
         <!-- Overview Modal -->
         <div id="overviewModal" class="modal">
@@ -796,10 +1048,10 @@
     </div>
     
     <script>
-        function openModal(modalType) {
-            // Close all modals first
-            const modals = document.querySelectorAll('.modal');
-            modals.forEach(modal => modal.style.display = 'none');
+        function showInfo(infoType) {
+            // Hide all info box content
+            const infoContents = document.querySelectorAll('.info-box-content');
+            infoContents.forEach(content => content.classList.remove('active'));
             
             // Remove active class from all tabs
             const tabs = document.querySelectorAll('.nav-tab');
@@ -807,6 +1059,18 @@
             
             // Add active class to clicked tab
             event.target.classList.add('active');
+            
+            // Show the specific info content
+            const infoContent = document.getElementById(infoType + 'Info');
+            if (infoContent) {
+                infoContent.classList.add('active');
+            }
+        }
+        
+        function openModal(modalType) {
+            // Close all modals first
+            const modals = document.querySelectorAll('.modal');
+            modals.forEach(modal => modal.style.display = 'none');
             
             // Open the specific modal
             const modal = document.getElementById(modalType + 'Modal');
@@ -832,9 +1096,9 @@
             });
         }
         
-        // Open overview modal by default
+        // Show overview info by default
         window.onload = function() {
-            openModal('overview');
+            showInfo('overview');
         }
     </script>
 </body>
