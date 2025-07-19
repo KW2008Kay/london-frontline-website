@@ -217,14 +217,10 @@
         
         .info-box-content {
             display: none;
-            opacity: 0;
-            transition: opacity 0.3s ease;
         }
         
         .info-box-content.active {
-            display: block;
-            opacity: 1;
-            animation: fadeIn 0.5s ease-in;
+            display: block !important;
         }
         
         @keyframes fadeIn {
@@ -1058,8 +1054,9 @@
             const infoContents = document.querySelectorAll('.info-box-content');
             console.log('Found info contents:', infoContents.length);
             infoContents.forEach(content => {
+                content.style.display = 'none';
                 content.classList.remove('active');
-                console.log('Removed active from:', content.id);
+                console.log('Hidden:', content.id);
             });
             
             // Remove active class from all tabs
@@ -1074,8 +1071,9 @@
             console.log('Looking for element with id:', infoType + 'Info');
             console.log('Found element:', infoContent);
             if (infoContent) {
+                infoContent.style.display = 'block';
                 infoContent.classList.add('active');
-                console.log('Added active class to:', infoContent.id);
+                console.log('Shown:', infoContent.id);
             } else {
                 console.error('Element not found:', infoType + 'Info');
             }
@@ -1113,13 +1111,26 @@
         // Show overview info by default
         window.onload = function() {
             console.log('Page loaded, showing overview');
-            showInfo('overview');
             
-            // Also ensure the first info box is visible
-            const firstInfoBox = document.querySelector('.info-box-content');
-            if (firstInfoBox) {
-                firstInfoBox.classList.add('active');
-                console.log('Made first info box active:', firstInfoBox.id);
+            // Hide all info boxes first
+            const allInfoBoxes = document.querySelectorAll('.info-box-content');
+            allInfoBoxes.forEach(box => {
+                box.style.display = 'none';
+                box.classList.remove('active');
+            });
+            
+            // Show the overview
+            const overviewBox = document.getElementById('overviewInfo');
+            if (overviewBox) {
+                overviewBox.style.display = 'block';
+                overviewBox.classList.add('active');
+                console.log('Overview box shown');
+            }
+            
+            // Make sure the overview tab is active
+            const overviewTab = document.querySelector('.nav-tab');
+            if (overviewTab) {
+                overviewTab.classList.add('active');
             }
         }
     </script>
