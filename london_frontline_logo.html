@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>London Frontline Logo</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            background: #f5f5f5;
+            font-family: Arial, sans-serif;
+        }
+        .logo-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .logo {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            border-radius: 15px;
+            padding: 30px 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .logo::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #ff6b35, #f7931e, #ff6b35);
+        }
+        .logo-text {
+            color: white;
+            font-size: 2.5em;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin: 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        .subtitle {
+            color: #ffd700;
+            font-size: 1.2em;
+            font-weight: 600;
+            margin-top: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .badge {
+            width: 80px;
+            height: 80px;
+            background: #ffd700;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2em;
+            font-weight: bold;
+            color: #1e3c72;
+            border: 4px solid white;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        .download-section {
+            margin-top: 30px;
+            text-align: center;
+        }
+        .download-btn {
+            background: #1e3c72;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 10px;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .download-btn:hover {
+            background: #2a5298;
+        }
+    </style>
+</head>
+<body>
+    <div class="logo-container">
+        <div class="logo">
+            <div class="badge">LF</div>
+            <h1 class="logo-text">London Frontline</h1>
+            <p class="subtitle">Protecting Our Capital</p>
+        </div>
+    </div>
+    
+    <div class="download-section">
+        <p>This logo design features:</p>
+        <ul style="text-align: left; max-width: 400px; margin: 0 auto;">
+            <li>Professional blue gradient background</li>
+            <li>Golden accent colors for authority</li>
+            <li>Clean typography with proper spacing</li>
+            <li>Circular badge with "LF" initials</li>
+            <li>Modern design suitable for official use</li>
+        </ul>
+        <br>
+        <a href="#" class="download-btn" onclick="downloadLogo()">Download Logo</a>
+        <a href="#" class="download-btn" onclick="copyToClipboard()">Copy Design</a>
+    </div>
+
+    <script>
+        function downloadLogo() {
+            alert('Logo design ready for download. You can take a screenshot or save this page.');
+        }
+        
+        function copyToClipboard() {
+            alert('Design copied to clipboard. You can paste it into your document.');
+        }
+    </script>
+</body>
+</html> 

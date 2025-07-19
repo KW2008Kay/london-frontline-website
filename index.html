@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>London Frontline - Official Documentation & Guidelines</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            opacity: 0.3;
+        }
+        
+        .logo-section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .london-frontline-logo {
+            display: inline-block;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            border-radius: 15px;
+            padding: 25px 35px;
+            box-shadow: 0 12px 35px rgba(0,0,0,0.4), 0 4px 15px rgba(0,0,0,0.2);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            border: 3px solid #ffd700;
+            min-width: 220px;
+        }
+        
+        .london-frontline-logo::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #ff6b35, #f7931e, #ffd700, #f7931e, #ff6b35);
+            animation: shimmer 3s ease-in-out infinite;
+        }
+        
+        @keyframes shimmer {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+        
+        .london-frontline-logo .badge {
+            width: 90px;
+            height: 90px;
+            background: linear-gradient(145deg, #e6e6e6, #ffffff);
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8em;
+            font-weight: bold;
+            color: #333;
+            border: 5px solid #333;
+            box-shadow: 
+                0 8px 25px rgba(0,0,0,0.3),
+                inset 0 2px 10px rgba(255,255,255,0.8),
+                inset 0 -2px 10px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .london-frontline-logo .badge::before {
+            content: '👑';
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 1.4em;
+            color: #ffd700;
+            text-shadow: 
+                0 0 15px #ffd700,
+                0 0 30px #ffd700,
+                0 0 45px #ffd700;
+            animation: crownGlow 2s ease-in-out infinite alternate;
+        }
+        
+        @keyframes crownGlow {
+            0% { text-shadow: 0 0 15px #ffd700, 0 0 30px #ffd700, 0 0 45px #ffd700; }
+            100% { text-shadow: 0 0 20px #ffd700, 0 0 40px #ffd700, 0 0 60px #ffd700; }
+        }
+        
+        .london-frontline-logo .badge::after {
+            content: 'LONDON\A FRONTLINE';
+            position: absolute;
+            bottom: 12px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.55em;
+            font-weight: bold;
+            color: #1e3c72;
+            letter-spacing: 0.8px;
+            text-align: center;
+            white-space: pre;
+            line-height: 1.3;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+        
+        .london-frontline-logo .logo-text {
+            color: white;
+            font-size: 1.9em;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin: 0;
+            text-shadow: 
+                2px 2px 4px rgba(0,0,0,0.5),
+                0 0 20px rgba(255,255,255,0.1);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        .london-frontline-logo .subtitle {
+            color: #ffd700;
+            font-size: 1em;
+            font-weight: 600;
+            margin-top: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+        
+        .title {
+            font-size: 2.8em;
+            font-weight: bold;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            position: relative;
+            z-index: 2;
+        }
+        
+        .subtitle {
+            font-size: 1.3em;
+            opacity: 0.9;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        /* Navigation Tabs */
+        .nav-tabs {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+        
+        .nav-tab {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border: 2px solid #dee2e6;
+            border-radius: 10px;
+            padding: 15px 25px;
+            cursor: pointer;
+            font-weight: 600;
+            color: #495057;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            min-width: 150px;
+            justify-content: center;
+        }
+        
+        .nav-tab:hover {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            border-color: #ffd700;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(30,60,114,0.3);
+        }
+        
+        .nav-tab.active {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            border-color: #ffd700;
+            box-shadow: 0 8px 20px rgba(30,60,114,0.3);
+        }
+        
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.7);
+            backdrop-filter: blur(5px);
+        }
+        
+        .modal-content {
+            background: white;
+            margin: 5% auto;
+            padding: 0;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 800px;
+            max-height: 80vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            animation: modalSlideIn 0.3s ease-out;
+        }
+        
+        @keyframes modalSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .modal-header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 25px 30px;
+            border-radius: 15px 15px 0 0;
+            position: relative;
+        }
+        
+        .modal-header h2 {
+            margin: 0;
+            font-size: 1.8em;
+            font-weight: bold;
+        }
+        
+        .close {
+            position: absolute;
+            right: 25px;
+            top: 25px;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            color: white;
+            transition: color 0.3s ease;
+        }
+        
+        .close:hover {
+            color: #ffd700;
+        }
+        
+        .modal-body {
+            padding: 30px;
+        }
+        
+        .modal-section {
+            margin-bottom: 30px;
+        }
+        
+        .modal-section h3 {
+            color: #1e3c72;
+            font-size: 1.4em;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #ffd700;
+        }
+        
+        .modal-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .modal-card {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #1e3c72;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        .modal-card h4 {
+            color: #1e3c72;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .stat-card {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .stat-number {
+            font-size: 2.5em;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .stat-label {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+        
+        .status-badge {
+            display: inline-block;
+            padding: 8px 16px;
+            border-radius: 25px;
+            font-size: 0.9em;
+            font-weight: bold;
+            margin: 5px;
+        }
+        
+        .status-active {
+            background: #28a745;
+            color: white;
+        }
+        
+        .status-pending {
+            background: #ffc107;
+            color: #333;
+        }
+        
+        .status-inactive {
+            background: #dc3545;
+            color: white;
+        }
+        
+        .contact-info {
+            background: #e9ecef;
+            padding: 25px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+        
+        .contact-info h3 {
+            color: #1e3c72;
+            margin-bottom: 20px;
+            font-size: 1.3em;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            padding: 10px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .contact-icon {
+            width: 30px;
+            margin-right: 15px;
+            color: #1e3c72;
+            font-size: 1.2em;
+        }
+        
+        .footer {
+            background: #1e3c72;
+            color: white;
+            text-align: center;
+            padding: 30px;
+            margin-top: 40px;
+            border-radius: 15px 15px 0 0;
+        }
+        
+        .print-button {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #1e3c72;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .print-button:hover {
+            background: #2a5298;
+            transform: translateY(-2px);
+        }
+        
+        @media print {
+            .print-button, .nav-tabs, .modal {
+                display: none;
+            }
+            body {
+                background: white;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .logo-section {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .title {
+                font-size: 2.2em;
+            }
+            
+            .nav-tabs {
+                flex-direction: column;
+            }
+            
+            .nav-tab {
+                min-width: auto;
+            }
+            
+            .modal-content {
+                width: 95%;
+                margin: 10% auto;
+            }
+            
+            .london-frontline-logo {
+                min-width: 180px;
+                padding: 15px 20px;
+            }
+            
+            .london-frontline-logo .logo-text {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <button class="print-button" onclick="window.print()">Print Document</button>
+    
+    <div class="header">
+        <div class="logo-section">
+            <div class="london-frontline-logo">
+                <div class="badge"></div>
+                <div class="logo-text">London Frontline</div>
+                <div class="subtitle">Official Documentation & Guidelines</div>
+            </div>
+        </div>
+        <h1 class="title">London Frontline</h1>
+        <p class="subtitle">Official Documentation & Guidelines</p>
+    </div>
+    
+    <div class="container">
+        <!-- Navigation Tabs -->
+        <div class="nav-tabs">
+            <div class="nav-tab active" onclick="openModal('overview')">
+                📋 Overview
+            </div>
+            <div class="nav-tab" onclick="openModal('guidelines')">
+                📜 Guidelines
+            </div>
+            <div class="nav-tab" onclick="openModal('departments')">
+                🏢 Departments
+            </div>
+            <div class="nav-tab" onclick="openModal('training')">
+                🎓 Training
+            </div>
+            <div class="nav-tab" onclick="openModal('contact')">
+                📞 Contact
+            </div>
+            <div class="nav-tab" onclick="openModal('application')">
+                📝 Application
+            </div>
+        </div>
+        
+        <!-- Overview Modal -->
+        <div id="overviewModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>📋 Community Overview</h2>
+                    <span class="close" onclick="closeModal('overviewModal')">&times;</span>
+                </div>
+                <div class="modal-body">
+                    <div class="modal-section">
+                        <h3>Welcome to London Frontline</h3>
+                        <p>Our community is dedicated to providing an immersive and realistic police and emergency services roleplay experience. We maintain high standards for roleplay quality and community engagement.</p>
+                        
+                        <div class="stats-grid">
+                            <div class="stat-card">
+                                <div class="stat-number">50+</div>
+                                <div class="stat-label">Active Members</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-number">24/7</div>
+                                <div class="stat-label">Server Uptime</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-number">3</div>
+                                <div class="stat-label">Emergency Services</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-number">100%</div>
+                                <div class="stat-label">Realistic Roleplay</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="modal-grid">
+                        <div class="modal-card">
+                            <h4>Community Status</h4>
+                            <span class="status-badge status-active">Active</span>
+                            <p>Our community is currently active and welcoming new members. We maintain high standards for roleplay quality and community engagement.</p>
+                        </div>
+                        <div class="modal-card">
+                            <h4>Server Type</h4>
+                            <p>FiveM Roleplay Server</p>
+                            <p>Focusing on realistic police and emergency services roleplay with custom scripts and resources.</p>
+                        </div>
+                        <div class="modal-card">
+                            <h4>Location</h4>
+                            <p>London Frontline, Central London</p>
+                            <p>Based on real London geography and landmarks, providing an authentic British policing experience.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Guidelines Modal -->
+        <div id="guidelinesModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>📜 Community Guidelines</h2>
+                    <span class="close" onclick="closeModal('guidelinesModal')">&times;</span>
+                </div>
+                <div class="modal-body">
+                    <div class="modal-grid">
+                        <div class="modal-card">
+                            <h4>Behavior Standards</h4>
+                            <ul>
+                                <li>Respect all community members and staff</li>
+                                <li>Maintain realistic roleplay at all times</li>
+                                <li>Follow server rules and regulations strictly</li>
+                                <li>Use appropriate language and professional conduct</li>
+                                <li>No harassment, discrimination, or toxic behavior</li>
+                            </ul>
+                        </div>
+                        <div class="modal-card">
+                            <h4>Roleplay Requirements</h4>
+                            <ul>
+                                <li>Stay in character during all roleplay scenarios</li>
+                                <li>Follow realistic police procedures and protocols</li>
+                                <li>Use proper radio communications and codes</li>
+                                <li>Maintain professional conduct and appearance</li>
+                                <li>Participate in training and development programs</li>
+                            </ul>
+                        </div>
+                        <div class="modal-card">
+                            <h4>Technical Requirements</h4>
+                            <ul>
+                                <li>Stable internet connection (minimum 10Mbps)</li>
+                                <li>Working microphone and headset</li>
+                                <li>FiveM client installed and updated</li>
+                                <li>Required mods and resources downloaded</li>
+                                <li>Discord account for community communication</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Departments Modal -->
+        <div id="departmentsModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>🏢 Available Departments</h2>
+                    <span class="close" onclick="closeModal('departmentsModal')">&times;</span>
+                </div>
+                <div class="modal-body">
+                    <div class="modal-grid">
+                        <div class="modal-card">
+                            <h4>Metropolitan Police</h4>
+                            <span class="status-badge status-active">Recruiting</span>
+                            <p>Join the Metropolitan Police Service and protect the streets of London. Experience realistic British policing with authentic procedures and equipment.</p>
+                            <ul>
+                                <li>Response Officers (PC/DC)</li>
+                                <li>Detectives (DS/DI)</li>
+                                <li>Specialist Units (SO19, Traffic)</li>
+                                <li>Management Positions (Sgt/Insp)</li>
+                                <li>Specialist Roles (Dog Handler, Mounted)</li>
+                            </ul>
+                        </div>
+                        <div class="modal-card">
+                            <h4>London Fire Brigade</h4>
+                            <span class="status-badge status-active">Recruiting</span>
+                            <p>Emergency response and fire safety services. Work alongside police to provide comprehensive emergency services.</p>
+                            <ul>
+                                <li>Firefighters</li>
+                                <li>Fire Safety Officers</li>
+                                <li>Rescue Teams</li>
+                                <li>Hazmat Specialists</li>
+                                <li>Fire Investigation Units</li>
+                            </ul>
+                        </div>
+                        <div class="modal-card">
+                            <h4>London Ambulance Service</h4>
+                            <span class="status-badge status-active">Recruiting</span>
+                            <p>Emergency medical services and patient care. Provide critical medical support during emergencies.</p>
+                            <ul>
+                                <li>Paramedics</li>
+                                <li>Emergency Medical Technicians</li>
+                                <li>Ambulance Drivers</li>
+                                <li>Emergency Care Practitioners</li>
+                                <li>Specialist Paramedics</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Training Modal -->
+        <div id="trainingModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>🎓 Training & Development</h2>
+                    <span class="close" onclick="closeModal('trainingModal')">&times;</span>
+                </div>
+                <div class="modal-body">
+                    <div class="modal-grid">
+                        <div class="modal-card">
+                            <h4>Basic Training</h4>
+                            <p>All new recruits must complete comprehensive basic training covering:</p>
+                            <ul>
+                                <li>Roleplay fundamentals and etiquette</li>
+                                <li>Server rules and community guidelines</li>
+                                <li>Basic police procedures and protocols</li>
+                                <li>Radio communications and codes</li>
+                                <li>Emergency response procedures</li>
+                            </ul>
+                        </div>
+                        <div class="modal-card">
+                            <h4>Advanced Training</h4>
+                            <p>Specialized training programs for experienced members:</p>
+                            <ul>
+                                <li>Advanced driving and pursuit tactics</li>
+                                <li>Firearms training and safety</li>
+                                <li>Detective work and investigations</li>
+                                <li>Leadership and management skills</li>
+                                <li>Specialist unit training</li>
+                            </ul>
+                        </div>
+                        <div class="modal-card">
+                            <h4>Continuous Development</h4>
+                            <p>Ongoing training and development opportunities:</p>
+                            <ul>
+                                <li>Regular scenario-based training</li>
+                                <li>Real-world police procedure updates</li>
+                                <li>Community workshops and seminars</li>
+                                <li>Mentorship programs</li>
+                                <li>Career progression pathways</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Contact Modal -->
+        <div id="contactModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>📞 Contact Information</h2>
+                    <span class="close" onclick="closeModal('contactModal')">&times;</span>
+                </div>
+                <div class="modal-body">
+                    <div class="contact-info">
+                        <h3>Community Leadership</h3>
+                        <div class="contact-item">
+                            <span class="contact-icon">👤</span>
+                            <span>Server Owner: Jim, Benj.</span>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-icon">📧</span>
+                            <span>Email: N/A</span>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-icon">💬</span>
+                            <span>Discord: [EU/UK] London Frontline</span>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-icon">🌐</span>
+                            <span>Website: N/A</span>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-icon">📱</span>
+                            <span>Support: Available 24/7 via Discord</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Application Modal -->
+        <div id="applicationModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>📝 Application Process</h2>
+                    <span class="close" onclick="closeModal('applicationModal')">&times;</span>
+                </div>
+                <div class="modal-body">
+                    <div class="modal-grid">
+                        <div class="modal-card">
+                            <h4>Step 1: Join Discord</h4>
+                            <p>Join our Discord community to stay updated and connect with other members. This is where all community communication takes place.</p>
+                            <p><strong>Discord Server:</strong> <a href="https://discord.gg/6WcxxJcCfT" target="_blank" style="color: #1e3c72; text-decoration: none; font-weight: bold; padding: 8px 16px; background: #ffd700; border-radius: 8px; display: inline-block; margin-top: 10px; transition: all 0.3s ease;">Join Discord Server</a></p>
+                        </div>
+                        <div class="modal-card">
+                            <h4>Step 2: Submit Application</h4>
+                            <p>Complete the online application form with your roleplay experience and preferences. Be honest and detailed in your responses.</p>
+                        </div>
+                        <div class="modal-card">
+                            <h4>Step 3: Interview</h4>
+                            <p>Attend a brief interview with our recruitment team to discuss your roleplay goals and ensure compatibility with our community.</p>
+                        </div>
+                        <div class="modal-card">
+                            <h4>Step 4: Training</h4>
+                            <p>Complete basic training and orientation before starting your roleplay journey. This ensures everyone maintains high standards.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>&copy; 2025 [EU/UK] London Frontline. All rights reserved.</p>
+        <p>In partnership with Metropolitan Police Service and London Frontline</p>
+        <p>Professional Roleplay Community | FiveM Server</p>
+    </div>
+    
+    <script>
+        function openModal(modalType) {
+            // Close all modals first
+            const modals = document.querySelectorAll('.modal');
+            modals.forEach(modal => modal.style.display = 'none');
+            
+            // Remove active class from all tabs
+            const tabs = document.querySelectorAll('.nav-tab');
+            tabs.forEach(tab => tab.classList.remove('active'));
+            
+            // Add active class to clicked tab
+            event.target.classList.add('active');
+            
+            // Open the specific modal
+            const modal = document.getElementById(modalType + 'Modal');
+            if (modal) {
+                modal.style.display = 'block';
+            }
+        }
+        
+        function closeModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.style.display = 'none';
+            }
+        }
+        
+        // Close modal when clicking outside of it
+        window.onclick = function(event) {
+            const modals = document.querySelectorAll('.modal');
+            modals.forEach(modal => {
+                if (event.target === modal) {
+                    modal.style.display = 'none';
+                }
+            });
+        }
+        
+        // Open overview modal by default
+        window.onload = function() {
+            openModal('overview');
+        }
+    </script>
+</body>
+</html> 
