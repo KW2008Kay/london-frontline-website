@@ -213,6 +213,28 @@
             margin-bottom: 20px;
             padding-bottom: 10px;
             border-bottom: 2px solid #ffd700;
+            text-align: left;
+        }
+        
+        .info-box p {
+            text-align: left;
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+        
+        .info-box h3 {
+            text-align: left;
+            color: #1e3c72;
+            margin-bottom: 15px;
+        }
+        
+        .info-box ul {
+            text-align: left;
+            margin-left: 20px;
+        }
+        
+        .info-box li {
+            margin-bottom: 8px;
         }
         
         .info-box-content {
@@ -361,6 +383,22 @@
             color: #1e3c72;
             margin-bottom: 10px;
             font-size: 1.2em;
+            text-align: left;
+        }
+        
+        .modal-card p {
+            text-align: left;
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+        
+        .modal-card ul {
+            text-align: left;
+            margin-left: 20px;
+        }
+        
+        .modal-card li {
+            margin-bottom: 8px;
         }
         
         .stats-grid {
@@ -1064,7 +1102,9 @@
             tabs.forEach(tab => tab.classList.remove('active'));
             
             // Add active class to clicked tab
-            event.target.classList.add('active');
+            if (event && event.target) {
+                event.target.classList.add('active');
+            }
             
             // Show the specific info content
             const infoContent = document.getElementById(infoType + 'Info');
@@ -1074,6 +1114,9 @@
                 infoContent.style.display = 'block';
                 infoContent.classList.add('active');
                 console.log('Shown:', infoContent.id);
+                
+                // Force a reflow to ensure display
+                infoContent.offsetHeight;
             } else {
                 console.error('Element not found:', infoType + 'Info');
             }
@@ -1132,6 +1175,18 @@
             if (overviewTab) {
                 overviewTab.classList.add('active');
             }
+            
+            // Add click event listeners to all tabs
+            const tabs = document.querySelectorAll('.nav-tab');
+            tabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    console.log('Tab clicked:', this.textContent.trim());
+                    const infoType = this.getAttribute('onclick').match(/showInfo\('([^']+)'\)/)[1];
+                    showInfo(infoType);
+                });
+            });
+            
+            console.log('All tabs have event listeners');
         }
     </script>
 </body>
